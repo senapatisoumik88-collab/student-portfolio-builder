@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Portfolio Builder</title>
+
+    <style>
+
+        body {
+            font-family: Arial;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            width: 350px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            background: linear-gradient(135deg, #ff7e5f, #feb47b);
+            color: white;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        #output {
+            margin-top: 20px;
+            background: #f4f4f4;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Student Portfolio Builder</h1>
+
+    <input type="text" id="name" placeholder="Enter your name">
+
+    <textarea id="skills" placeholder="Enter your skills"></textarea>
+
+    <textarea id="projects" placeholder="Enter your projects"></textarea>
+
+    <button onclick="generatePortfolio()">Generate Portfolio</button>
+
+    <button onclick="generateAI()">Generate with AI</button>
+
+    <div id="output"></div>
+
+</div>
+
+
+<script>
+
+function generatePortfolio() {
+
+    let name = document.getElementById("name").value;
+    let skills = document.getElementById("skills").value;
+    let projects = document.getElementById("projects").value;
+
+    document.getElementById("output").innerHTML =
+        "<h2>" + name + "'s Portfolio</h2>" +
+        "<p><b>Skills:</b> " + skills + "</p>" +
+        "<p><b>Projects:</b> " + projects + "</p>";
+}
+
+
+function generateAI() {
+
+    let skills = document.getElementById("skills").value;
+
+    fetch("/generate-ai", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            input: skills
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById("output").innerHTML = data.result;
+    });
+
+}
+
+</script>
+
+
+</body>
+</html>
