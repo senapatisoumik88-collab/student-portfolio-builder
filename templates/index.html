@@ -2,123 +2,139 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Easy Portfolio Maker</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Easy Portfolio Maker</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
     <style>
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background: linear-gradient(120deg, #667eea, #764ba2);
-            color: white;
         }
 
         /* Navbar */
         .navbar {
             display: flex;
             justify-content: space-between;
+            align-items: center;
             padding: 15px 40px;
-            background: rgba(0,0,0,0.2);
+            background: linear-gradient(90deg, #4b6cb7, #6a5acd);
+            color: white;
         }
 
-        .logo {
-            font-size: 22px;
-            font-weight: bold;
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-section img {
+            width: 40px;
+            height: 40px;
         }
 
         .nav-links a {
             color: white;
             margin-left: 20px;
             text-decoration: none;
+            font-weight: bold;
         }
 
-        /* Hero */
+        /* Hero Section */
         .hero {
             text-align: center;
             padding: 100px 20px;
+            background: linear-gradient(180deg, #4b6cb7, #6a5acd);
+            color: white;
         }
 
         .hero h1 {
             font-size: 48px;
+            margin-bottom: 20px;
         }
 
         .hero p {
             font-size: 18px;
-            margin-top: 10px;
+            margin-bottom: 20px;
         }
 
-        .btn {
-            margin-top: 20px;
+        .hero button {
             padding: 12px 25px;
-            background: white;
-            color: #764ba2;
+            font-size: 16px;
+            border: none;
             border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
+            background: white;
+            color: #4b6cb7;
+            cursor: pointer;
         }
 
         /* Features */
         .features {
-            background: white;
-            color: black;
-            padding: 50px;
             text-align: center;
+            padding: 60px;
         }
 
-        .feature-box {
-            margin: 20px;
-        }
-
-        /* Footer */
         .footer {
             text-align: center;
-            padding: 20px;
-            background: rgba(0,0,0,0.3);
+            padding: 15px;
+            background: #4b6cb7;
+            color: white;
         }
-
     </style>
-</head>
 
+</head>
 <body>
 
     <!-- Navbar -->
     <div class="navbar">
-        <div class="logo">Easy Portfolio Maker</div>
+
+        <!-- LOGO + NAME -->
+        <div class="logo-section">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo">
+            <h2>Easy Portfolio Maker</h2>
+        </div>
+
+        <!-- Menu -->
         <div class="nav-links">
-            <a href="#">Home</a>
+            <a href="/">Home</a>
             <a href="#">About</a>
             <a href="#">Contact</a>
         </div>
+
     </div>
 
     <!-- Hero -->
     <div class="hero">
+
         <h1>Create Your Portfolio in Minutes</h1>
+
         <p>Free portfolio builder for students. No coding required.</p>
-        <a href="/create" class="btn">Create Portfolio</a>
+
+        <a href="/create">
+            <button>Create Portfolio</button>
+        </a>
+
     </div>
 
     <!-- Features -->
     <div class="features">
+
         <h2>Features</h2>
 
-        <div class="feature-box">
-            ⚡ Fast and easy builder
-        </div>
+        <p>⚡ Fast and easy builder</p>
 
-        <div class="feature-box">
-            🎨 Modern templates
-        </div>
+        <p>🎨 Modern templates</p>
 
-        <div class="feature-box">
-            🌍 Free hosting
-        </div>
+        <p>🌍 Free hosting</p>
 
     </div>
 
     <!-- Footer -->
     <div class="footer">
+
         © 2026 Easy Portfolio Maker
+
     </div>
 
 </body>
