@@ -2,10 +2,17 @@ from flask import Flask, render_template, request, jsonify
 
 app = Flask(__name__)
 
+# Home page
 @app.route("/")
-def index():
+def home():
     return render_template("index.html")
 
+# Create page
+@app.route("/create")
+def create():
+    return render_template("create.html")
+
+# AI generate route
 @app.route("/generate-ai", methods=["POST"])
 def generate_ai():
     data = request.get_json()
@@ -24,6 +31,7 @@ def generate_ai():
     """
 
     return jsonify({"result": result})
+
 
 if __name__ == "__main__":
     app.run(debug=True, port=5001)
