@@ -1,126 +1,125 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Student Portfolio Builder</title>
+    <meta charset="UTF-8">
+    <title>Easy Portfolio Maker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style>
-
         body {
-            font-family: Arial;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
             margin: 0;
-        }
-
-        .container {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            width: 350px;
-        }
-
-        h1 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        input, textarea {
-            width: 100%;
-            padding: 10px;
-            margin-top: 10px;
-            border-radius: 8px;
-            border: 1px solid #ccc;
-        }
-
-        button {
-            background: linear-gradient(135deg, #ff7e5f, #feb47b);
+            font-family: Arial, sans-serif;
+            background: linear-gradient(120deg, #667eea, #764ba2);
             color: white;
-            border: none;
-            padding: 12px;
-            width: 100%;
-            border-radius: 8px;
-            font-size: 16px;
-            cursor: pointer;
-            margin-top: 15px;
         }
 
-        button:hover {
-            opacity: 0.9;
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 40px;
+            background: rgba(0,0,0,0.2);
         }
 
-        #output {
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .nav-links a {
+            color: white;
+            margin-left: 20px;
+            text-decoration: none;
+        }
+
+        /* Hero */
+        .hero {
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        .btn {
             margin-top: 20px;
-            background: #f4f4f4;
-            padding: 10px;
+            padding: 12px 25px;
+            background: white;
+            color: #764ba2;
             border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Features */
+        .features {
+            background: white;
+            color: black;
+            padding: 50px;
+            text-align: center;
+        }
+
+        .feature-box {
+            margin: 20px;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0,0,0,0.3);
         }
 
     </style>
-
 </head>
 
 <body>
 
-<div class="container">
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo">Easy Portfolio Maker</div>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </div>
+    </div>
 
-    <h1>Student Portfolio Builder</h1>
+    <!-- Hero -->
+    <div class="hero">
+        <h1>Create Your Portfolio in Minutes</h1>
+        <p>Free portfolio builder for students. No coding required.</p>
+        <a href="/create" class="btn">Create Portfolio</a>
+    </div>
 
-    <input type="text" id="name" placeholder="Enter your name">
+    <!-- Features -->
+    <div class="features">
+        <h2>Features</h2>
 
-    <textarea id="skills" placeholder="Enter your skills"></textarea>
+        <div class="feature-box">
+            ⚡ Fast and easy builder
+        </div>
 
-    <textarea id="projects" placeholder="Enter your projects"></textarea>
+        <div class="feature-box">
+            🎨 Modern templates
+        </div>
 
-    <button onclick="generatePortfolio()">Generate Portfolio</button>
+        <div class="feature-box">
+            🌍 Free hosting
+        </div>
 
-    <button onclick="generateAI()">Generate with AI</button>
+    </div>
 
-    <div id="output"></div>
-
-</div>
-
-
-<script>
-
-function generatePortfolio() {
-
-    let name = document.getElementById("name").value;
-    let skills = document.getElementById("skills").value;
-    let projects = document.getElementById("projects").value;
-
-    document.getElementById("output").innerHTML =
-        "<h2>" + name + "'s Portfolio</h2>" +
-        "<p><b>Skills:</b> " + skills + "</p>" +
-        "<p><b>Projects:</b> " + projects + "</p>";
-}
-
-
-function generateAI() {
-
-    let skills = document.getElementById("skills").value;
-
-    fetch("/generate-ai", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            input: skills
-        })
-    })
-    .then(response => response.json())
-    .then(data => {
-        document.getElementById("output").innerHTML = data.result;
-    });
-
-}
-
-</script>
-
+    <!-- Footer -->
+    <div class="footer">
+        © 2026 Easy Portfolio Maker
+    </div>
 
 </body>
 </html>
