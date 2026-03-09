@@ -35,6 +35,6 @@ def generate_ai():
 
 import os
 
-if _name_ == "__ __main__ __":
+if _name_ == :"__main__":
     port = int(os.environ.get("PORT", 10000))
     app.run(host="0.0.0.0", port=port)
