@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
@@ -15,14 +15,14 @@ def create():
 # AI generate route
 @app.route("/generate-ai", methods=["POST"])
 def generate_ai():
-    data = request.get_json()
-    skills = data.get("input", "")
-
+    name = request.form.get("name")
+skills = request.form.get("skills")
+projects = request.form.get("projects")
     result = f"""
-    <h2>AI Generated Portfolio</h2>
+    <h2>{name}'s AI Generated Portfolio</h2>
     <p><b>Bio:</b> Passionate developer skilled in {skills}.</p>
     <p><b>Skills:</b> {skills}</p>
-    <p><b>Projects:</b></p>
+    <p><b>Projects:</b> {projects}</p>
     <ul>
         <li>Portfolio Builder Website</li>
         <li>Flask Web App</li>
@@ -30,7 +30,7 @@ def generate_ai():
     </ul>
     """
 
-    return jsonify({"result": result})
+    return result
 
 
 import os
