@@ -1,21 +1,18 @@
-rom flask import Flask, render_template, request
+from flask import Flask, render_template, request
 import os
 
-app = Flask(__name__)
+app = Flask(_name_)
 
-# Home page
 @app.route("/")
 def home():
     return render_template("index.html")
 
 
-# Create portfolio page
 @app.route("/create")
 def create():
     return render_template("create.html")
 
 
-# Generate AI portfolio
 @app.route("/generate-ai", methods=["POST"])
 def generate_ai():
 
@@ -23,7 +20,7 @@ def generate_ai():
     skills = request.form.get("skills")
     projects = request.form.get("projects")
 
-    result = f"""
+    return f"""
     <html>
     <head>
         <title>{name}'s Portfolio</title>
@@ -39,11 +36,9 @@ def generate_ai():
 
     <p><b>Projects:</b> {projects}</p>
 
-    <h3>Example Projects</h3>
-
     <ul>
         <li>Portfolio Builder Website</li>
-        <li>Flask Web Application</li>
+        <li>Flask Web App</li>
         <li>AI Student Tool</li>
     </ul>
 
@@ -55,9 +50,7 @@ def generate_ai():
     </html>
     """
 
-    return result
 
-
-if _name_ == "__main__":
+if _name_ == "_main_":
     port = int(os.environ.get("PORT", 10000))
     app.run(host="0.0.0.0", port=port)
