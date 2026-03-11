@@ -1,56 +1,19 @@
-from flask import Flask, render_template, request
-import os
+name = request.form.get("name")
+skills = request.form.get("skills")
+projects = request.form.get("projects")
 
-app = Flask(_name_)
+photo = request.files.get("photo")
 
-@app.route("/")
-def home():
-    return render_template("index.html")
+photo_filename = None
 
+if photo and photo.filename != "":
+    photo_filename = photo.filename
+    photo.save(os.path.join(app.config["UPLOAD_FOLDER"], photo_filename))
 
-@app.route("/create")
-def create():
-    return render_template("create.html")
-
-
-@app.route("/generate-ai", methods=["POST"])
-def generate_ai():
-
-    name = request.form.get("name")
-    skills = request.form.get("skills")
-    projects = request.form.get("projects")
-
-    return f"""
-    <html>
-    <head>
-        <title>{name}'s Portfolio</title>
-    </head>
-
-    <body style="font-family:Arial; padding:40px;">
-
-    <h1>{name}'s AI Generated Portfolio</h1>
-
-    <p><b>Bio:</b> Passionate developer skilled in {skills}.</p>
-
-    <p><b>Skills:</b> {skills}</p>
-
-    <p><b>Projects:</b> {projects}</p>
-
-    <ul>
-        <li>Portfolio Builder Website</li>
-        <li>Flask Web App</li>
-        <li>AI Student Tool</li>
-    </ul>
-
-    <br>
-
-    <button onclick="window.print()">Download Portfolio</button>
-
-    </body>
-    </html>
-    """
-
-
-if _name_ == "_main_":
-    port = int(os.environ.get("PORT", 10000))
-    app.run(host="0.0.0.0", port=port)
+return render_template(
+    "portfolio.html",
+    name=name,
+    skills=skills,
+    projects=projects,
+    photo=photo_filename
+)
