@@ -1,36 +1,14 @@
-from flask import Flask, render_template, request
-import os
+from flask import Flask, render_template
 
 app = Flask(__name__)
-
-UPLOAD_FOLDER = "static/uploads"
-app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
 @app.route("/")
 def home():
     return render_template("index.html")
 
-@app.route("/generate-ai", methods=["POST"])
-def generate_ai():
+@app.route("/health")
+def health():
+    return "OK"
 
-    name = request.form.get("name")
-    skills = request.form.get("skills")
-    projects = request.form.get("projects")
-
-    photo = request.files.get("photo")
-    photo_filename = None
-
-    if photo and photo.filename != "":
-        photo_filename = photo.filename
-        photo.save(os.path.join(app.config["UPLOAD_FOLDER"], photo_filename))
-
-    return render_template(
-        "portfolio.html",
-        name=name,
-        skills=skills,
-        projects=projects,
-        photo=photo_filename
-    )
-
-if __ == "__main__":
-    app.run()
+if _name_ == "__main__":
+    app.run(host="0.0.0.0", port=10000)
