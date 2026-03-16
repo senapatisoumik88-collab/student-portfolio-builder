@@ -2,27 +2,27 @@
 <html>
 <head>
 <title>Create Portfolio</title>
-<link rel="stylesheet" href="/static/style.css">
 </head>
 
-<body>
+<body style="display:flex;justify-content:center;align-items:center;height:100vh;font-family:Arial;">
 
-<div class="navbar">
-    <div class="logo-section">
-     <h2>Easy Portfolio Maker</h2></div>
+<div style="background:white;padding:40px;border-radius:10px;box-shadow:0 5px 20px rgba(0,0,0,0.1);width:300px;text-align:center;">
 
+<h2>Create Your Portfolio</h2>
 
-<div class="features">
+<form action="/portfolio" method="post">
 
-<h1>Create Your Portfolio</h1>
+<input type="text" name="name" placeholder="Your Name"><br><br>
 
-<form action="/generate-ai" method="POST">
+<input type="text" name="skills" placeholder="Your Skills"><br><br>
 
-<input type="text" name="name" placeholder="Your Name">
+<input type="text" name="project" placeholder="Your Project"><br><br>
 
-<input type="text" name="skills" placeholder="Your Skills">
+<input type="text" name="photo" placeholder="Photo URL"><br><br>
 
-<input type="text" name="projects" placeholder="Your Projects">
+<input type="text" name="github" placeholder="GitHub Link"><br><br>
+
+<input type="text" name="linkedin" placeholder="LinkedIn Link"><br><br>
 
 <button type="submit">Generate Portfolio</button>
 
@@ -32,3 +32,5 @@
 
 </body>
 </html>
+
+
