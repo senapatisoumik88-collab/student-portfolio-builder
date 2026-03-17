@@ -11,14 +11,16 @@
     <h2>Create Your Portfolio</h2>
 
     <form action="/portfolio" method="post">
-        <input type="text" name="name" placeholder="Your Name">
-        <input type="text" name="skills" placeholder="Your Skills">
-        <input type="text" name="project" placeholder="Your Project">
-        <input type="text" name="photo" placeholder="Photo URL">
-        <input type="text" name="github" placeholder="GitHub Link">
-        <input type="text" name="linkedin" placeholder="LinkedIn Link">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="text" name="skills" placeholder="Your Skills" required>
+        <input type="text" name="project" placeholder="Your Project" required>
+        <input type="text" name="photo" placeholder="Photo URL" required>
+        <input type="text" name="github" placeholder="GitHub Link" required>
+        <input type="text" name="linkedin" placeholder="LinkedIn Link" required>
 
-        <button type="submit">Generate Portfolio</button>
+        <button type="submit" onclick="this.innerText='Generating...'">
+            Generate Portfolio
+        </button>
     </form>
 </div>
 
