@@ -1,36 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Create Portfolio</title>
+    <title>Create Portfolio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
-<body style="display:flex;justify-content:center;align-items:center;height:100vh;font-family:Arial;">
+<body>
 
-<div style="background:white;padding:40px;border-radius:10px;box-shadow:0 5px 20px rgba(0,0,0,0.1);width:300px;text-align:center;">
+<div class="form-container">
+    <h2>Create Your Portfolio</h2>
 
-<h2>Create Your Portfolio</h2>
+    <form action="/portfolio" method="post">
+        <input type="text" name="name" placeholder="Your Name">
+        <input type="text" name="skills" placeholder="Your Skills">
+        <input type="text" name="project" placeholder="Your Project">
+        <input type="text" name="photo" placeholder="Photo URL">
+        <input type="text" name="github" placeholder="GitHub Link">
+        <input type="text" name="linkedin" placeholder="LinkedIn Link">
 
-<form action="/portfolio" method="post">
-
-<input type="text" name="name" placeholder="Your Name"><br><br>
-
-<input type="text" name="skills" placeholder="Your Skills"><br><br>
-
-<input type="text" name="project" placeholder="Your Project"><br><br>
-
-<input type="text" name="photo" placeholder="Photo URL"><br><br>
-
-<input type="text" name="github" placeholder="GitHub Link"><br><br>
-
-<input type="text" name="linkedin" placeholder="LinkedIn Link"><br><br>
-
-<button type="submit">Generate Portfolio</button>
-
-</form>
-
+        <button type="submit">Generate Portfolio</button>
+    </form>
 </div>
 
 </body>
 </html>
-
-
