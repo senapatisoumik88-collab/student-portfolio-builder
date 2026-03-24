@@ -1,37 +1,34 @@
 from flask import Flask, render_template, request
+import re
 
 app = Flask(__name__)
 
-@app.route("/")
+@app.route('/')
 def home():
-    return render_template("index.html")
+    return render_template('create.html')
 
-@app.route("/create")
-def create():
-    return render_template("create.html")
+@app.route('/generate', methods=['POST'])
+def generate():
+    name = request.form.get('name')
+    skill = request.form.get('skill')
+    title = request.form.get('title')
+    photo = request.form.get('photo')
+    github = request.form.get('github')
+    linkedin = request.form.get('linkedin')
 
-@app.route("/portfolio", methods=["POST"])
-def portfolio():
-    name = request.form["name"]
-    skills = request.form["skills"]
-    project = request.form["project"]
-    github = request.form["github"]
-    linkedin = request.form["linkedin"]
-    photo = request.form["photo"]
+    # ✅ JPG/JPEG validation
+    if not re.search(r"\.(jpg|jpeg)$", photo, re.IGNORECASE):
+        return "❌ Error: Only JPG/JPEG image URL allowed!"
 
     return render_template(
-        "portfolio.html",
+        'portfolio.html',
         name=name,
-        skills=skills,
-        project=project,
+        skill=skill,
+        title=title,
+        photo=photo,
         github=github,
-        linkedin=linkedin,
-        photo=photo
+        linkedin=linkedin
     )
 
-@app.route("/health")
-def health():
-    return "OK"
-
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=10000)
+if __name__ == '__main__':
+    app.run(debug=True)
