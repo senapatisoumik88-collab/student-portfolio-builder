@@ -1,4 +1,4 @@
-AI Portfolio Builder
+ Portfolio Builder
 
 A Flask web application that automatically generates a developer portfolio from user input.
 
