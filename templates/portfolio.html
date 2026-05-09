@@ -4,36 +4,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Portfolio Builder</title>
+    <title>Portfolio</title>
 
     <style>
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial,sans-serif;
         }
 
-        body {
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(135deg, #141e30, #243b55);
+        body{
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            background:linear-gradient(135deg,#141e30,#243b55);
         }
 
-        .container {
-            width: 400px;
-            padding: 35px;
-            border-radius: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(12px);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        .card{
+            width:400px;
+            padding:30px;
+            border-radius:20px;
+            text-align:center;
+            background:rgba(255,255,255,0.1);
+            backdrop-filter:blur(10px);
+            color:white;
+            box-shadow:0 8px 32px rgba(0,0,0,0.3);
         }
 
-        h1 {
-            color: white;
-            text-align: center;
-            margin-bottom:
+        img{
+            width:130px;
+            height:130px;
+            border-radius:50%;
+            object-fit:cover;
+            border:4px solid white;
+            margin-bottom:20px;
+        }
+
+        h1{
+            margin-bottom:10px;
+        }
+
+        h2{
+            color:#ffb347;
+            margin-top:20px;
+        }
+
+        p{
+            color:#ddd;
+        }
+
+        a{
+            display:inline-block;
+            margin-top:20px;
+            padding:12px 20px;
+            text-decoration:none;
+            border-radius:10px;
+            background:#ff4b8b;
+            color:white;
+            margin-right:10px;
+        }
+
+        a:hover{
+            background:#ff2d75;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="card">
+
+        <img src="{{ photo }}" alt="Profile Photo">
+
+        <h1>{{ name }}</h1>
+
+        <h2>Skills</h2>
+        <p>{{ skill }}</p>
+
+        <h2>Project</h2>
+        <p>{{ title }}</p>
+
+        <a href="{{ github }}" target="_blank">
+            GitHub
+        </a>
+
+        <a href="{{ linkedin }}" target="_blank">
+            LinkedIn
+        </a>
+
+    </div>
+
+</body>
+
+</html>
