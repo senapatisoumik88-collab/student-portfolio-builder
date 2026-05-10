@@ -2,9 +2,11 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
+
+    <title>Student Portfolio</title>
 
     <style>
 
@@ -12,77 +14,80 @@
             margin:0;
             padding:0;
             box-sizing:border-box;
-            font-family:'Poppins',sans-serif;
+            font-family:Arial;
         }
 
         body{
-            height:100vh;
+
+            background:linear-gradient(135deg,#020617,#0f172a,#1e3a8a);
+            min-height:100vh;
             display:flex;
             justify-content:center;
             align-items:center;
-            background:linear-gradient(135deg,#0f172a,#1e293b,#2563eb);
-            overflow:hidden;
+            padding:30px;
+            color:white;
         }
 
         .card{
-            width:400px;
-            padding:35px;
+
+            width:100%;
+            max-width:420px;
+            background:rgba(255,255,255,0.08);
+            padding:40px;
             border-radius:25px;
+            backdrop-filter:blur(10px);
             text-align:center;
-            background:rgba(255,255,255,0.12);
-            backdrop-filter:blur(14px);
-            border:1px solid rgba(255,255,255,0.2);
-            box-shadow:0 10px 40px rgba(0,0,0,0.4);
-            color:white;
-            transition:0.4s;
+            box-shadow:0 0 25px rgba(0,0,0,0.4);
         }
 
-        .card:hover{
-            transform:translateY(-8px);
-            box-shadow:0 15px 45px rgba(37,99,235,0.5);
-        }
+        .profile-pic{
 
-        img{
-            width:140px;
-            height:140px;
+            width:130px;
+            height:130px;
             border-radius:50%;
             object-fit:cover;
-            border:4px solid white;
+            border:4px solid #38bdf8;
             margin-bottom:20px;
         }
 
         h1{
-            font-size:32px;
-            margin-bottom:10px;
+            margin-bottom:20px;
+            font-size:40px;
         }
 
         h2{
-            color:#60a5fa;
-            margin-top:25px;
+            color:#38bdf8;
+            margin-top:20px;
             margin-bottom:10px;
         }
 
         p{
-            color:#e2e8f0;
+            color:#cbd5e1;
             line-height:1.6;
         }
 
-        a{
-            display:inline-block;
-            margin-top:25px;
-            padding:12px 24px;
+        .buttons{
+
+            margin-top:30px;
+            display:flex;
+            justify-content:center;
+            gap:15px;
+            flex-wrap:wrap;
+        }
+
+        .btn{
+
+            padding:12px 20px;
+            border-radius:10px;
             text-decoration:none;
-            border-radius:12px;
-            background:#2563eb;
-            color:white;
-            margin-right:10px;
+            background:#38bdf8;
+            color:black;
             font-weight:bold;
             transition:0.3s;
         }
 
-        a:hover{
-            background:#1d4ed8;
-            transform:scale(1.05);
+        .btn:hover{
+            background:white;
         }
 
     </style>
@@ -91,25 +96,39 @@
 
 <body>
 
-    <div class="card">
+    <div class="card" id="portfolio">
 
-        <img src="{{ photo }}" alt="Profile Photo">
+        <img src="{{ url_for('static', filename=photo) }}"
+             class="profile-pic">
 
         <h1>{{ name }}</h1>
 
         <h2>Skills</h2>
-        <p>{{ skill }}</p>
+        <p>{{ skills }}</p>
 
         <h2>Project</h2>
-        <p>{{ title }}</p>
+        <p>{{ project }}</p>
 
-        <a href="{{ github }}" target="_blank">
-            GitHub
-        </a>
+        <div class="buttons">
 
-        <a href="{{ linkedin }}" target="_blank">
-            LinkedIn
-        </a>
+            <a href="{{ github }}"
+               target="_blank"
+               class="btn">
+               GitHub
+            </a>
+
+            <a href="{{ linkedin }}"
+               target="_blank"
+               class="btn">
+               LinkedIn
+            </a>
+
+            <button onclick="window.print()"
+                    class="btn">
+                    Download
+            </button>
+
+        </div>
 
     </div>
 
