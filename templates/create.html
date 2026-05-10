@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -16,6 +18,7 @@
         }
 
         body{
+
             background:linear-gradient(135deg,#020617,#0f172a,#1e3a8a);
             min-height:100vh;
             display:flex;
@@ -26,35 +29,48 @@
         }
 
         .container{
+
             width:100%;
-            max-width:500px;
+            max-width:550px;
             background:rgba(255,255,255,0.08);
             padding:40px;
             border-radius:20px;
             backdrop-filter:blur(10px);
+            box-shadow:0 0 25px rgba(0,0,0,0.4);
         }
 
         h1{
+
             text-align:center;
             margin-bottom:30px;
             color:#38bdf8;
+            font-size:35px;
         }
 
-        input, textarea{
+        input,
+        textarea{
 
             width:100%;
             padding:15px;
             margin-bottom:20px;
             border:none;
-            border-radius:10px;
+            border-radius:12px;
             background:#111827;
             color:white;
             font-size:16px;
+            outline:none;
         }
 
         textarea{
             resize:none;
-            height:100px;
+            height:120px;
+        }
+
+        input[type="file"]{
+
+            background:#111827;
+            padding:12px;
+            color:#94a3b8;
         }
 
         button{
@@ -62,7 +78,7 @@
             width:100%;
             padding:15px;
             border:none;
-            border-radius:10px;
+            border-radius:12px;
             background:#38bdf8;
             color:black;
             font-size:18px;
@@ -73,6 +89,14 @@
 
         button:hover{
             background:white;
+            transform:scale(1.02);
+        }
+
+        .note{
+            text-align:center;
+            margin-top:15px;
+            color:#94a3b8;
+            font-size:14px;
         }
 
     </style>
@@ -83,9 +107,11 @@
 
     <div class="container">
 
-        <h1>Create Your Portfolio</h1>
+        <h1>Create Student Portfolio</h1>
 
-        <form action="/portfolio" method="POST">
+        <form action="/portfolio"
+              method="POST"
+              enctype="multipart/form-data">
 
             <input type="text"
                    name="name"
@@ -111,13 +137,23 @@
                    placeholder="LinkedIn Profile Link"
                    required>
 
+            <input type="file"
+                   name="photo"
+                   accept="image/*"
+                   required>
+
             <button type="submit">
                 Generate Portfolio
             </button>
 
         </form>
 
+        <p class="note">
+            Upload your photo and create your professional portfolio instantly.
+        </p>
+
     </div>
 
 </body>
+
 </html>
