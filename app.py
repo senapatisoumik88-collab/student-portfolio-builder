@@ -5,7 +5,7 @@ app = Flask(__name__)
 @app.route('/')
 def home():
     return render_template(
-        'portfolio.html',
+        'index.html',
         name='Soumik Senapati',
         skill='Python, HTML, CSS, Flask',
         title='Personal Portfolio Website',
